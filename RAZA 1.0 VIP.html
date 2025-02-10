@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel CSX Team Free</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            width: 200px;
+        }
+
+        /* Styles pour la fenêtre modale */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: white;
+        }
+
+        .password-input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .panel {
+            display: none;
+            background-color: #1a1a1a;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #000;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .panel-header h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .panel-header .close-btn {
+            font-size: 18px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .panel .user-info, .panel .validity-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .panel .user-info img, .panel .validity-info img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .panel .user-info span, .panel .validity-info span {
+            font-size: 14px;
+        }
+
+        .panel .slider-container {
+            margin-bottom: 20px;
+        }
+
+        .panel .slider-container input[type="range"] {
+            width: 100%;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            margin-left: auto;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .panel-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+       </style>
+      </head>
+      </body>
+<!-- Fenêtre initiale pour le mot de passe -->
+<div class="container" id="initial-container">
+    <h1>PANEL</h1>
+    <h2>RAZA IOS V1</h2>
+    <button class="button" onclick="showModal()">ANTRE AVEK RAZA IOS</button>
+</div>
+
+<!-- Fenêtre modale pour le mot de passe -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>ANTRE MOD PASS RAZA IOS</h2>
+        <input type="password" id="passwordInput" class="password-input" placeholder="PASS RAZA IOS">
+        <button class="button" onclick="checkPassword()">VALIDE HEADTRICK</button>
+    </div>
+</div>
+
+<!-- Deuxième fenêtre après validation du mot de passe -->
+<div class="panel" id="second-panel">
+    <div class="panel-header">
+        <h2>BYENVENI SOU RAZA IOS</h2>
+        <span class="close-btn">&times;</span>
+    </div>
+
+    <div class="user-info">
+        <img src="user-icon.png" alt="Utilisateur">
+        <span>USER</span>
+    </div>
+
+    <div class="validity-info">
+        <img src="validity-icon.png" alt="Validité">
+        <span>VALIDE</span>
+    </div>
+
+    <div class="panel-item">
+        <span>AIMBOT RAZA</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="panel-item">
+        <span>AIM RAZA</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="slider-container">
+        <label for="rangeInput">POUSE: 50%</label>
+        <input type="range" id="rangeInput" min="0" max="100" value="0">
+    </div>
+
+    <div class="panel-item">
+        <span>AIMLOCK V1</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="panel-item">
+        <span>NORECOIL v1</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+</div>
+
+<script>
+    function showModal() {
+        document.getElementById('myModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    function checkPassword() {
+        var password = document.getElementById('passwordInput').value;
+        var correctPassword = "R4ZA234"; // Remplacez par votre mot de passe
+
+        if (password === correctPassword) {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('initial-container').style.display = 'none';
+            document.getElementById('second-panel').style.display = 'block';
+        } else {
+            alert("Mot de passe incorrect. Veuillez réessayer.");
+        }
+    }
+
+    // Ferme la fenêtre modale si on clique en dehors du contenu
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('chemin/vers/image/fond.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-box h2 {
+            color: gray;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .login-box h2 span {
+            color: #44A1FF;
+        }
+
+        .login-box input[type="text"], .login-box input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .login-box button {
+            background-color: #44A1FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .login-box button:disabled {
+            background-color: #ccc;
+        }
+
+        .secondary-buttons {
+            margin-top: 20px;
+        }
+
+        .secondary-buttons button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .status-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .status-bar span {
+            color: lime;
+        }
+    </style>
+</head>
+<body>
+    
+    <d
+
+    <div class="status-bar">
+        KREYATÈ: <span>Online</span>  R4ZA 2.0
+    </div>
+</body>
+</html>
