@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Painel 2.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .panel {
+            width: 320px;
+            background-color: #111;
+            border: 2px solid #0f0;
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
+        }
+        .panel.active {
+            display: block;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+        }
+        .tabs button {
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .tabs button:hover {
+            background-color: #090;
+        }
+        .toggle {
+            width: 40px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .toggle::after {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background-color: #f00;
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            transition: 0.3s;
+        }
+        .toggle.active::after {
+            left: 21px;
+            background-color: #0f0;
+        }
+        .status-panel {
+            width: 320px;
+            background-color: #111;
+            border: 2px solid red;
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
+            color: #fff;
+        }
+        .status-panel.active {
+            display: block;
+        }
+        .status-option {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .status-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .status-footer button {
+            background-color: red;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .status-footer button:hover {
+            background-color: #900;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel active">
+        <div class="panel-header">
+            <h1>Premium Painel 2.0</h1>
+            <div class="tabs">
+                <button onclick="showMain()">Fresh look</button>
+                <button onclick="showOthers()">Others</button>
+            </div>
+        </div>
+        <!-- Options for Fresh look -->
+        <div class="option">
+            <label>Auxilio 2x</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+        <div class="option">
+            <label>Aim Trick</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+    </div>
+
+    <div class="status-panel" id="others-panel">
+        <div class="status-option">
+            <label>Headshot Aimlock</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+        <div class="status-option">
+            <label>Bypass Original</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+        <div class="status-option">
+            <label>ESP Location</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+        <div class="status-option">
+            <label>Auto Aim Head</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+        <div class="status-option">
+            <label>Aimbot</label>
+            <div class="toggle" onclick="toggle(this)"></div>
+        </div>
+        <div class="status-footer">
+            <label>Status:</label>
+            <button onclick="showMain()">CLOSE</button>
+        </div>
+    </div>
+
+    <script>
+        function toggle(element) {
+            element.classList.toggle('active');
+        }
+        function showMain() {
+            document.querySelector('.panel').classList.add('active');
+            document.getElementById('others-panel').classList.remove('active');
+        }
+        function showOthers() {
+            document.querySelector('.panel').classList.remove('active');
+            document.getElementById('others-panel').classList.add('active');
+        }
+    </script>
+</body>
+</html>
